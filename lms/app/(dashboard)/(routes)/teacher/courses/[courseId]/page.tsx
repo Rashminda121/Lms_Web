@@ -44,6 +44,11 @@ const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
 
   const completionText = `(${completedFields}/${totalFields})`;
 
+  const categoryOptions = categories.map((category) => ({
+    label: category.name,
+    value: category.id,
+  }));
+
   return (
     <div className="p-6">
       <div className="flex items-center justify-between">
@@ -67,10 +72,11 @@ const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
           <CategoryForm
             initialData={course}
             courseId={course.id}
-            options={categories.map((category) => ({
-              label: category.name,
-              value: category.id,
-            }))}
+            // options={categories.map((category) => ({
+            //   label: category.name,
+            //   value: category.id,
+            // }))}
+            options={categoryOptions}
           />
         </div>
       </div>
