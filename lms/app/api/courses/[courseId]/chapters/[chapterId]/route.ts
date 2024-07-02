@@ -70,6 +70,7 @@ export async function PATCH(
     return NextResponse.json(chapter);
   } catch (error) {
     console.log("[COURSES_CHAPTER_ID]", error);
+    console.log("");
     return new NextResponse("Internal Error", { status: 500 });
   }
 }
