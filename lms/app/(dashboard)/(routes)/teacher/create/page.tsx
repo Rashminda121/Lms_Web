@@ -75,7 +75,9 @@ const CreatePage = () => {
                       {...field}
                     />
                   </FormControl>
-                  <FormDescription>What will you teach</FormDescription>
+                  <FormDescription>
+                    What will you teach in this course?
+                  </FormDescription>
                   <FormMessage />
                 </FormItem>
               )}
