@@ -9,10 +9,14 @@ import { Pencil, PlusCircle, Video } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import toast from "react-hot-toast";
-import ReactPlayer from "react-player";
+import { Chapter } from "@prisma/client";
+
+import dynamic from "next/dynamic";
+
+const ReactPlayer = dynamic(() => import("react-player"), { ssr: false });
 
 interface ChapterVideoFormProps {
-  initialData: { videoUrl: string | null };
+  initialData: Chapter & { videoUrl: string | null };
   courseId: string;
   chapterId: string;
 }
