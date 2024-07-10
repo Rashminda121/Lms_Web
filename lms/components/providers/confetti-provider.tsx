@@ -9,4 +9,6 @@ export const ConfettiProvider = () => {
 
   if (!confetti.isOpen) {
   }
+  if (!confetti.isOpen) {
+  }
 };
