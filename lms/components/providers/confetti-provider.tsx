@@ -6,7 +6,6 @@ import { useConfettiStore } from "@/hooks/use-confetti-store";
 
 export const ConfettiProvider = () => {
   const confetti = useConfettiStore();
-  const confetti = useConfettiStore();
 
   if (!confetti.isOpen) {
   }
