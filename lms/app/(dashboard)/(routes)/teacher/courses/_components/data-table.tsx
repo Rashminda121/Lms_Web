@@ -90,6 +90,14 @@ export function DataTable<TData, TValue>({
                             header.getContext()
                           )}
                     </TableHead>
+                    <TableHead key={header.id}>
+                    {header.isPlaceholder
+                      ? null
+                      : flexRender(
+                          header.column.columnDef.header,
+                          header.getContext()
+                        )}
+                  </TableHead>
                   );
                 })}
               </TableRow>
