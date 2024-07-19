@@ -51,6 +51,7 @@ export const columns: ColumnDef<Course>[] = [
       }).format(price);
 
       return <div>{formatted}</div>;
+      return <div>{formatted}</div>;
     },
   },
   {
