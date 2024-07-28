@@ -25,6 +25,16 @@ export const CoursesList = ({ items }: CoursesListProps) => {
             progress={item.progress}
             category={item?.category?.name!}
           />
+          <CourseCard
+          key={item.id}
+          id={item.id}
+          title={item.title}
+          imageUrl={item.imageUrl!}
+          chaptersLength={item.chapters.length}
+          price={item.price!}
+          progress={item.progress}
+          category={item?.category?.name!}
+        />
         ))}
       </div>
       {items.length === 0 && (
