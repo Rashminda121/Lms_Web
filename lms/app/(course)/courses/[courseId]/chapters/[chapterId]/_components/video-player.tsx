@@ -122,5 +122,6 @@ export const VideoPlayer = ({
         />
       )}
     </div>
+    <div></div>
   );
 };
