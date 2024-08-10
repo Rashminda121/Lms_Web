@@ -121,6 +121,7 @@ export const VideoPlayer = ({
           height="100%"
         />
       )}
+      <div></div>
     </div>
   );
 };
