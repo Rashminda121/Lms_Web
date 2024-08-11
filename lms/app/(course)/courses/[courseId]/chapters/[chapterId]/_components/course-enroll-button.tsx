@@ -16,5 +16,6 @@ export const CourseEnrollButton = ({
     <Button size="sm" className="w-full md:w-auto ">
       Enroll for {formatPrice(price)}
     </Button>
+    <div></div>
   );
 };
