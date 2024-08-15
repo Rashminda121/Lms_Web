@@ -93,7 +93,6 @@ const ChapterIdPage = async ({
               />
             )}
           </div>
-          <div></div>
           <Separator />
           <div>
             <Preview value={chapter.description!} />
