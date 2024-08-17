@@ -6,20 +6,17 @@ import * as ProgressPrimitive from "@radix-ui/react-progress";
 import { cn } from "@/lib/utils";
 import { cva, type VariantProps } from "class-variance-authority";
 
-const progressVariants = cva(
-  "h-full w-full flex-1 bg-primary transsition-all",
-  {
-    variants: {
-      variant: {
-        default: "bg-sky-600",
-        success: "bg-emarald-700",
-      },
+const progressVariants = cva("h-full w-full flex-1 bg-primary transition-all", {
+  variants: {
+    variant: {
+      default: "bg-sky-600",
+      success: "bg-emerald-700",
     },
-    defaultVariants: {
-      variant: "default",
-    },
-  }
-);
+  },
+  defaultVariants: {
+    variant: "default",
+  },
+});
 
 export interface ProgressProps
   extends React.HTMLAttributes<HTMLDivElement>,
