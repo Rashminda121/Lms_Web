@@ -68,6 +68,10 @@ import React, { useEffect, useState } from "react";
 import ReactPlayer from "react-player";
 import { Loader2, Lock } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useRouter } from "next/navigation";
+import { useConfettiStore } from "@/hooks/use-confetti-store";
+import toast from "react-hot-toast";
+import axios from "axios";
 
 interface VideoPlayerProps {
   playbackId: string;
@@ -91,8 +95,34 @@ export const VideoPlayer = ({
   videoUrl,
 }: VideoPlayerProps) => {
   const [isReady, setIsReady] = useState(false);
+  const router = useRouter();
+  const confetti = useConfettiStore();
 
-  // Ensure that isReady is only modified on the client side
+  const onEnd = async () => {
+    try {
+      if (completeOnEnd) {
+        await axios.put(
+          `/api/courses/${courseId}/chapters/${chapterId}/progress`,
+          {
+            isCompleted: true,
+          }
+        );
+        if (!nextChapterId) {
+          confetti.onOpen();
+        }
+
+        toast.success("Progress updated");
+
+        if (nextChapterId) {
+          router.push(`/courses/${courseId}/chapters/${nextChapterId}`);
+        }
+      }
+      router.refresh();
+    } catch {
+      toast.error("Something went wrong");
+    }
+  };
+
   useEffect(() => {
     if (!isLocked) {
       setIsReady(true);
@@ -114,8 +144,14 @@ export const VideoPlayer = ({
       )}
       {!isLocked && isReady && (
         <ReactPlayer
+          title={title}
           className={cn(!isReady && "hidden")}
+          onCanPlay={() => setIsReady(true)}
+          onEnded={onEnd}
           url={videoUrl}
+          playing={true}
+          muted={true}
+          playbackId={playbackId}
           controls
           width="100%"
           height="100%"
